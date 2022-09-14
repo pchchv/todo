@@ -27,4 +27,25 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export { getTodos, addTodo }
+const updateTodo =async (req: Request, res: Response): Promise<void> => {
+    try {
+        const {
+            params: { id },
+            body,
+        } = req
+        const updateTodo: ITodo | null = await Todo.findByIdAndUpdate(
+            { _id: id },
+            body
+        )
+        const allTodos: ITodo[] = await Todo.find()
+        res.status(200).json({
+            message: 'Todo updated',
+            todo: updateTodo,
+            todos: allTodos,
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
+export { getTodos, addTodo, updateTodo }
