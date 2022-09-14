@@ -1,13 +1,13 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "dist/app.js",
   "repository": "git@github.com:pchchv/todo.git",
   "author": "pchchv <ipchchv@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "distribute": "yarn build-ts && node dist/server.js",
-    "develop": "tsc-watch --skipLibCheck --onSuccess 'node dist/server.js'",
+    "distribute": "yarn build-ts && node dist/app.js",
+    "develop": "tsc-watch --skipLibCheck --onSuccess 'node dist/app.js'",
     "build-ts": "tsc --skipLibCheck",
     "test": "yarn jest --forceExit --runInBand",
     "pretty": "prettier --check src",
@@ -17,9 +17,11 @@
     "mongoose": "^6.0.14",
     "express": "^4.17.1",
     "envalid": "^7.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@typegoose/typegoose": "^9.2.0",
     "@types/jest": "^27.0.3",
     "@types/express": "^4.17.6",
