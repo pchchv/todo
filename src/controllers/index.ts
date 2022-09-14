@@ -38,14 +38,20 @@ const updateTodo =async (req: Request, res: Response): Promise<void> => {
             body
         )
         const allTodos: ITodo[] = await Todo.find()
-        res.status(200).json({
-            message: 'Todo updated',
-            todo: updateTodo,
-            todos: allTodos,
-        })
+        res.status(200).json({ message: 'Todo updated', todo: updateTodo, todos: allTodos })
     } catch (error) {
         throw error
     }
 }
 
-export { getTodos, addTodo, updateTodo }
+const deleteTodo = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const deletedTodo: ITodo | null = await Todo.findByIdAndRemove(req.params.id)
+        const allTodos: ITodo[] = await Todo.find()
+        res.status(200).json({ message: 'Todo deleted', todo: deletedTodo, todos:allTodos })
+    } catch (error) {
+        throw error
+    }
+}
+
+export { getTodos, addTodo, updateTodo, deleteTodo }
