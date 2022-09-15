@@ -34,17 +34,30 @@ export const addTodo = async (
 
 export const updateTodo = async (
     todo: ITodo
-  ): Promise<AxiosResponse<ApiDataType>> => {
+): Promise<AxiosResponse<ApiDataType>> => {
     try {
-      const todoUpdate: Pick<ITodo, 'status'> = {
-        status: true,
-      }
-      const updatedTodo: AxiosResponse<ApiDataType> = await axios.put(
-        `${baseUrl}/edit-todo/${todo._id}`,
-        todoUpdate
-      )
-      return updatedTodo
+        const todoUpdate: Pick<ITodo, 'status'> = {
+            status: true,
+        }
+        const updatedTodo: AxiosResponse<ApiDataType> = await axios.put(
+            `${baseUrl}/edit-todo/${todo._id}`,
+            todoUpdate
+        )
+        return updatedTodo
     } catch (error) {
-      throw error
+        throw error
     }
-  }
+}
+
+export const deleteTodo = async (
+    _id: string
+): Promise<AxiosResponse<ApiDataType>> => {
+    try {
+        const deletedTodo: AxiosResponse<ApiDataType> = await axios.delete(
+            `${baseUrl}/delete-todo/${_id}`
+        )
+        return deletedTodo
+    } catch (error) {
+        throw error
+    }
+}
