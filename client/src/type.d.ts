@@ -6,3 +6,7 @@ interface ITodo {
     createdAt?: string
     updatedAt?: string
 }
+
+type TodoProps = {
+    todo: ITodo
+}
